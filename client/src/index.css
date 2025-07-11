@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -39,13 +41,13 @@
 }
 
 .dark {
-  --background: hsl(0, 0%, 4%);
+  --background: hsl(0, 0%, 3%);
   --foreground: hsl(0, 0%, 98%);
   --muted: hsl(240, 3.7%, 15.9%);
   --muted-foreground: hsl(240, 5%, 64.9%);
   --popover: hsl(240, 10%, 3.9%);
   --popover-foreground: hsl(0, 0%, 98%);
-  --card: hsl(240, 10%, 10%);
+  --card: hsl(240, 10%, 8%);
   --card-foreground: hsl(0, 0%, 98%);
   --border: hsl(240, 3.7%, 15.9%);
   --input: hsl(240, 3.7%, 15.9%);
@@ -58,6 +60,44 @@
   --destructive: hsl(0, 62.8%, 30.6%);
   --destructive-foreground: hsl(0, 0%, 98%);
   --ring: hsl(240, 4.9%, 83.9%);
+  
+  --dark-bg: hsl(0, 0%, 3%);
+  --dark-card: hsl(240, 10%, 8%);
+  --glass-bg: hsla(0, 0%, 10%, 0.4);
+}
+
+.light {
+  --background: hsl(0, 0%, 98%);
+  --foreground: hsl(0, 0%, 10%);
+  --muted: hsl(240, 4.8%, 95.9%);
+  --muted-foreground: hsl(240, 3.8%, 46.1%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(0, 0%, 10%);
+  --card: hsl(0, 0%, 95%);
+  --card-foreground: hsl(0, 0%, 10%);
+  --border: hsl(240, 5.9%, 90%);
+  --input: hsl(240, 5.9%, 90%);
+  --primary: hsl(197, 100%, 40%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --secondary: hsl(240, 4.8%, 95.9%);
+  --secondary-foreground: hsl(240, 5.9%, 10%);
+  --accent: hsl(240, 4.8%, 95.9%);
+  --accent-foreground: hsl(240, 5.9%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 10%, 3.9%);
+  
+  --electric: hsl(197, 100%, 40%);
+  --electric-glow: hsl(197, 100%, 50%);
+  --neon-purple: hsl(280, 83%, 45%);
+  --neon-purple-glow: hsl(280, 100%, 55%);
+  --neon-green: hsl(142, 100%, 40%);
+  --neon-green-glow: hsl(142, 100%, 50%);
+  --neon-pink: hsl(320, 100%, 50%);
+  --neon-orange: hsl(25, 100%, 50%);
+  --dark-bg: hsl(0, 0%, 98%);
+  --dark-card: hsl(0, 0%, 95%);
+  --glass-bg: hsla(0, 0%, 100%, 0.7);
 }
 
 @layer base {
@@ -399,7 +439,7 @@ html {
   perspective: 1000px;
 }
 
-.transform-style-preserve-3d {
+.preserve-3d {
   transform-style: preserve-3d;
 }
 
@@ -410,4 +450,21 @@ html {
 
 .rotate-y-180 {
   transform: rotateY(180deg);
+}
+
+/* Typing cursor animation */
+.typing-cursor::after {
+  content: "|";
+  animation: blink 1s infinite;
+  color: var(--electric);
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Handwriting font */
+.font-handwriting {
+  font-family: 'Kalam', cursive;
 }

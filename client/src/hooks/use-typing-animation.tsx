@@ -1,12 +1,40 @@
 import { useState, useEffect } from "react";
 
-export default function useTypingAnimation(texts: string[], speed = 100, delay = 2000) {
+interface TypingAnimationOptions {
+  speed?: number;
+  delay?: number;
+  loop?: boolean;
+  startDelay?: number;
+}
+
+export default function useTypingAnimation(
+  texts: string[], 
+  options: TypingAnimationOptions = {}
+) {
+  const { speed = 100, delay = 2000, loop = true, startDelay = 0 } = options;
+  
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState("");
+  const [isStarted, setIsStarted] = useState(false);
 
   useEffect(() => {
+    if (startDelay > 0 && !isStarted) {
+      const startTimer = setTimeout(() => {
+        setIsStarted(true);
+      }, startDelay);
+      return () => clearTimeout(startTimer);
+    }
+    
+    if (startDelay === 0 && !isStarted) {
+      setIsStarted(true);
+    }
+  }, [startDelay, isStarted]);
+
+  useEffect(() => {
+    if (!isStarted) return;
+    
     const currentText = texts[currentTextIndex];
 
     const timeout = setTimeout(() => {
@@ -15,7 +43,9 @@ export default function useTypingAnimation(texts: string[], speed = 100, delay =
           setText(currentText.slice(0, currentCharIndex + 1));
           setCurrentCharIndex(prev => prev + 1);
         } else {
-          setTimeout(() => setIsDeleting(true), delay);
+          if (loop) {
+            setTimeout(() => setIsDeleting(true), delay);
+          }
         }
       } else {
         if (currentCharIndex > 0) {
@@ -29,7 +59,29 @@ export default function useTypingAnimation(texts: string[], speed = 100, delay =
     }, isDeleting ? speed / 2 : speed);
 
     return () => clearTimeout(timeout);
-  }, [currentTextIndex, currentCharIndex, isDeleting, texts, speed, delay]);
+  }, [currentTextIndex, currentCharIndex, isDeleting, texts, speed, delay, loop, isStarted]);
 
   return text;
+}
+
+// Enhanced typing effect component
+export function TypingText({ 
+  texts, 
+  className = "", 
+  options = {},
+  cursor = true 
+}: {
+  texts: string[];
+  className?: string;
+  options?: TypingAnimationOptions;
+  cursor?: boolean;
+}) {
+  const typedText = useTypingAnimation(texts, options);
+  
+  return (
+    <span className={`${className} ${cursor ? 'typing-cursor' : ''}`}>
+      {typedText}
+      {cursor && <span className="animate-pulse text-electric">|</span>}
+    </span>
+  );
 }
