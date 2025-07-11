@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(0, 0%, 4%);
+  --background: hsl(0, 0%, 3%);
   --foreground: hsl(0, 0%, 98%);
   --muted: hsl(240, 3.7%, 15.9%);
   --muted-foreground: hsl(240, 5%, 64.9%);
   --popover: hsl(240, 10%, 3.9%);
   --popover-foreground: hsl(0, 0%, 98%);
-  --card: hsl(240, 10%, 10%);
+  --card: hsl(240, 10%, 8%);
   --card-foreground: hsl(0, 0%, 98%);
   --border: hsl(240, 3.7%, 15.9%);
   --input: hsl(240, 3.7%, 15.9%);
@@ -24,12 +24,18 @@
   --ring: hsl(240, 4.9%, 83.9%);
   --radius: 0.5rem;
   
-  /* Custom Colors */
+  /* Enhanced Custom Colors */
   --electric: hsl(197, 100%, 50%);
-  --neon-purple: hsl(264, 83%, 58%);
+  --electric-glow: hsl(197, 100%, 60%);
+  --neon-purple: hsl(280, 83%, 58%);
+  --neon-purple-glow: hsl(280, 100%, 70%);
   --neon-green: hsl(142, 100%, 50%);
-  --dark-bg: hsl(0, 0%, 4%);
-  --dark-card: hsl(0, 0%, 10%);
+  --neon-green-glow: hsl(142, 100%, 60%);
+  --neon-pink: hsl(320, 100%, 60%);
+  --neon-orange: hsl(25, 100%, 60%);
+  --dark-bg: hsl(0, 0%, 3%);
+  --dark-card: hsl(240, 10%, 8%);
+  --glass-bg: hsla(0, 0%, 10%, 0.4);
 }
 
 .dark {
@@ -96,21 +102,44 @@
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   backdrop-filter: blur(5px);
   mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
 }
 
 .cursor-grow {
-  transform: scale(3);
-  background: rgba(124, 58, 237, 0.3);
+  transform: translate(-50%, -50%) scale(2.5);
+  background: rgba(124, 58, 237, 0.6);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
 }
 
-/* Glassmorphism */
+/* Hide default cursor on interactive elements */
+.cursor-pointer, 
+button, 
+a, 
+.magnetic-btn,
+[role="button"] {
+  cursor: none;
+}
+
+/* Enhanced Glassmorphism */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-intense {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* Typing Animation */
@@ -168,20 +197,55 @@ html {
   background-size: 50px 50px;
 }
 
-/* Custom Animations */
+/* Enhanced Custom Animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%, 100% { transform: translateY(0px) rotateX(0deg); }
+  50% { transform: translateY(-20px) rotateX(3deg); }
 }
 
 @keyframes pulse-glow {
-  0% { box-shadow: 0 0 20px rgba(0, 245, 255, 0.3); }
-  100% { box-shadow: 0 0 40px rgba(0, 245, 255, 0.6); }
+  0% { 
+    box-shadow: 
+      0 0 20px rgba(0, 245, 255, 0.3),
+      0 0 40px rgba(0, 245, 255, 0.1);
+  }
+  100% { 
+    box-shadow: 
+      0 0 40px rgba(0, 245, 255, 0.6),
+      0 0 80px rgba(0, 245, 255, 0.2);
+  }
 }
 
 @keyframes particle-float {
-  0% { transform: translateY(0px) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(-1000px) rotate(360deg); opacity: 0; }
+  0% { transform: translateY(0px) rotate(0deg) scale(1); opacity: 1; }
+  50% { transform: translateY(-500px) rotate(180deg) scale(1.2); opacity: 0.7; }
+  100% { transform: translateY(-1000px) rotate(360deg) scale(0.8); opacity: 0; }
+}
+
+@keyframes neon-border {
+  0%, 100% { 
+    border-color: var(--electric);
+    box-shadow: 0 0 10px var(--electric);
+  }
+  33% { 
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 10px var(--neon-purple);
+  }
+  66% { 
+    border-color: var(--neon-green);
+    box-shadow: 0 0 10px var(--neon-green);
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes hover-lift {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(-10px) scale(1.02); }
 }
 
 .animate-float {
@@ -194,6 +258,24 @@ html {
 
 .animate-particle-float {
   animation: particle-float 8s linear infinite;
+}
+
+.animate-neon-border {
+  animation: neon-border 3s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animate-hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-hover-lift:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* Utility Classes */
@@ -238,5 +320,94 @@ html {
 }
 
 .bg-dark-card {
-  background-color: hsl(0, 0%, 10%);
+  background-color: hsl(240, 10%, 8%);
+}
+
+.text-neon-pink {
+  color: hsl(320, 100%, 60%);
+}
+
+.text-neon-orange {
+  color: hsl(25, 100%, 60%);
+}
+
+.bg-neon-pink {
+  background-color: hsl(320, 100%, 60%);
+}
+
+.bg-neon-orange {
+  background-color: hsl(25, 100%, 60%);
+}
+
+.border-neon-pink {
+  border-color: hsl(320, 100%, 60%);
+}
+
+.border-neon-orange {
+  border-color: hsl(25, 100%, 60%);
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-electric {
+  background: linear-gradient(135deg, var(--electric), var(--electric-glow));
+}
+
+.bg-gradient-purple {
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-purple-glow));
+}
+
+.bg-gradient-green {
+  background: linear-gradient(135deg, var(--neon-green), var(--neon-green-glow));
+}
+
+.bg-gradient-rainbow {
+  background: linear-gradient(45deg, 
+    var(--electric), 
+    var(--neon-purple), 
+    var(--neon-green), 
+    var(--neon-pink));
+}
+
+/* Interactive Elements */
+.hover-neon {
+  transition: all 0.3s ease;
+}
+
+.hover-neon:hover {
+  text-shadow: 0 0 10px currentColor;
+  filter: brightness(1.2);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.4);
+}
+
+/* 3D Flip Card Styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
 }

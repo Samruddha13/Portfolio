@@ -17,7 +17,7 @@ export default function CustomCursor() {
     document.addEventListener("mousemove", updateMousePosition);
 
     // Add event listeners for interactive elements
-    const interactiveElements = document.querySelectorAll("a, button, .magnetic-btn");
+    const interactiveElements = document.querySelectorAll("a, button, .magnetic-btn, [role='button'], .cursor-pointer");
     interactiveElements.forEach((element) => {
       element.addEventListener("mouseenter", handleMouseEnter);
       element.addEventListener("mouseleave", handleMouseLeave);
@@ -36,19 +36,22 @@ export default function CustomCursor() {
     <motion.div
       className="custom-cursor"
       animate={{
-        x: mousePosition.x - 10,
-        y: mousePosition.y - 10,
-        scale: isHovering ? 3 : 1,
+        x: mousePosition.x,
+        y: mousePosition.y,
+        scale: isHovering ? 2.5 : 1,
       }}
       transition={{
         type: "spring",
-        stiffness: 500,
-        damping: 28,
+        stiffness: 800,
+        damping: 35,
       }}
       style={{
         background: isHovering 
-          ? "rgba(124, 58, 237, 0.3)" 
+          ? "rgba(124, 58, 237, 0.6)" 
           : "rgba(0, 245, 255, 0.8)",
+        boxShadow: isHovering 
+          ? "0 0 20px rgba(124, 58, 237, 0.4)" 
+          : "0 0 10px rgba(0, 245, 255, 0.3)",
       }}
     />
   );
