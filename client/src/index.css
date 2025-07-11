@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 10%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(197, 100%, 50%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+  
+  /* Custom Colors */
+  --electric: hsl(197, 100%, 50%);
+  --neon-purple: hsl(264, 83%, 58%);
+  --neon-green: hsl(142, 100%, 50%);
+  --dark-bg: hsl(0, 0%, 4%);
+  --dark-card: hsl(0, 0%, 10%);
+}
+
+.dark {
+  --background: hsl(0, 0%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 10%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(197, 100%, 50%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(0, 0%, 10%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, hsl(197, 100%, 50%), hsl(264, 83%, 58%));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, hsl(264, 83%, 58%), hsl(142, 100%, 50%));
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 245, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(5px);
+  mix-blend-mode: difference;
+}
+
+.cursor-grow {
+  transform: scale(3);
+  background: rgba(124, 58, 237, 0.3);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Typing Animation */
+.typing-text {
+  overflow: hidden;
+  border-right: 2px solid hsl(197, 100%, 50%);
+  white-space: nowrap;
+  margin: 0 auto;
+}
+
+/* Particle Background */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(45deg, hsl(197, 100%, 50%), hsl(264, 83%, 58%));
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Magnetic Button Effect */
+.magnetic-btn {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+
+.magnetic-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Progress Bar Animation */
+.progress-bar {
+  position: relative;
+  overflow: hidden;
+  background: hsl(240, 3.7%, 15.9%);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, hsl(197, 100%, 50%), hsl(264, 83%, 58%), hsl(142, 100%, 50%));
+  border-radius: inherit;
+  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Grid Pattern Background */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(0, 245, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 245, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 20px rgba(0, 245, 255, 0.3); }
+  100% { box-shadow: 0 0 40px rgba(0, 245, 255, 0.6); }
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-1000px) rotate(360deg); opacity: 0; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+.animate-particle-float {
+  animation: particle-float 8s linear infinite;
+}
+
+/* Utility Classes */
+.text-electric {
+  color: hsl(197, 100%, 50%);
+}
+
+.text-neon-purple {
+  color: hsl(264, 83%, 58%);
+}
+
+.text-neon-green {
+  color: hsl(142, 100%, 50%);
+}
+
+.bg-electric {
+  background-color: hsl(197, 100%, 50%);
+}
+
+.bg-neon-purple {
+  background-color: hsl(264, 83%, 58%);
+}
+
+.bg-neon-green {
+  background-color: hsl(142, 100%, 50%);
+}
+
+.border-electric {
+  border-color: hsl(197, 100%, 50%);
+}
+
+.border-neon-purple {
+  border-color: hsl(264, 83%, 58%);
+}
+
+.border-neon-green {
+  border-color: hsl(142, 100%, 50%);
+}
+
+.bg-dark-bg {
+  background-color: hsl(0, 0%, 4%);
+}
+
+.bg-dark-card {
+  background-color: hsl(0, 0%, 10%);
+}
