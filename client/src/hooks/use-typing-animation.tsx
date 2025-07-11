@@ -33,9 +33,9 @@ export default function useTypingAnimation(
   }, [startDelay, isStarted]);
 
   useEffect(() => {
-    if (!isStarted) return;
+    if (!isStarted || texts.length === 0) return;
     
-    const currentText = texts[currentTextIndex];
+    const currentText = texts[currentTextIndex] || "";
 
     const timeout = setTimeout(() => {
       if (!isDeleting) {
@@ -43,7 +43,7 @@ export default function useTypingAnimation(
           setText(currentText.slice(0, currentCharIndex + 1));
           setCurrentCharIndex(prev => prev + 1);
         } else {
-          if (loop) {
+          if (loop && texts.length > 1) {
             setTimeout(() => setIsDeleting(true), delay);
           }
         }
@@ -59,7 +59,7 @@ export default function useTypingAnimation(
     }, isDeleting ? speed / 2 : speed);
 
     return () => clearTimeout(timeout);
-  }, [currentTextIndex, currentCharIndex, isDeleting, texts, speed, delay, loop, isStarted]);
+  }, [currentTextIndex, currentCharIndex, isDeleting, isStarted]);
 
   return text;
 }

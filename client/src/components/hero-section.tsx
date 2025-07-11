@@ -13,93 +13,96 @@ export default function HeroSection() {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative grid-bg">
       <div className="container mx-auto px-6 text-center relative z-10">
-        {/* Polaroid Photo Frame */}
+        {/* Animated Profile Circle */}
         <motion.div 
-          className="w-64 h-80 mx-auto mb-8 relative"
-          initial={{ scale: 0, opacity: 0, rotateY: 180 }}
-          animate={{ scale: 1, opacity: 1, rotateY: 0 }}
+          className="w-48 h-48 mx-auto mb-8 relative"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 15, duration: 1.2 }}
-          whileHover={{ 
-            rotateY: 5, 
-            rotateX: 5, 
-            scale: 1.05,
-            transition: { duration: 0.3 }
-          }}
         >
-          {/* Polaroid Frame */}
-          <div className="w-full h-full bg-white p-4 rounded-lg shadow-2xl transform-gpu">
-            {/* Photo Area */}
-            <div className="w-full h-48 bg-gray-100 rounded overflow-hidden relative">
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" 
-                alt="Professional developer portrait" 
-                className="w-full h-full object-cover"
-              />
-              {/* Photo overlay effects */}
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-br from-electric/10 via-transparent to-neon-purple/10"
-                animate={{ opacity: [0.3, 0.1, 0.3] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              />
-            </div>
-            
-            {/* Handwritten text area */}
-            <div className="mt-4 space-y-2">
-              <motion.div 
-                className="font-handwriting text-gray-800 text-lg"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1, duration: 0.8 }}
-                style={{ transform: 'rotate(-1deg)' }}
-              >
-                <TypingText 
-                  texts={["Samruddha ♥"]}
-                  options={{ speed: 120, loop: false, startDelay: 1200 }}
-                  cursor={false}
-                  className="text-gray-700"
-                />
-              </motion.div>
-              <motion.div 
-                className="font-handwriting text-gray-600 text-sm"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.5, duration: 0.8 }}
-                style={{ transform: 'rotate(0.5deg)' }}
-              >
-                <TypingText 
-                  texts={["Frontend Dev • 2024"]}
-                  options={{ speed: 100, loop: false, startDelay: 2000 }}
-                  cursor={false}
-                />
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Floating tape pieces */}
+          {/* Main Circle */}
           <motion.div 
-            className="absolute -top-2 left-8 w-16 h-8 bg-yellow-200/80 rounded transform rotate-12"
-            animate={{ rotate: [12, 8, 12] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            style={{ 
-              background: 'linear-gradient(45deg, #fef3c7, #fbbf24)',
-              backdropFilter: 'blur(2px)'
-            }}
-          />
-          <motion.div 
-            className="absolute -bottom-2 right-6 w-12 h-6 bg-yellow-200/80 rounded transform -rotate-6"
-            animate={{ rotate: [-6, -10, -6] }}
-            transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-            style={{ 
-              background: 'linear-gradient(45deg, #fef3c7, #fbbf24)',
-              backdropFilter: 'blur(2px)'
-            }}
-          />
-
-          {/* Glow effect behind polaroid */}
-          <motion.div 
-            className="absolute inset-0 bg-gradient-to-r from-electric/20 via-neon-purple/20 to-neon-green/20 rounded-lg blur-xl -z-10"
+            className="w-full h-full rounded-full bg-gradient-to-r from-electric via-neon-purple to-neon-green p-1"
             animate={{ 
-              scale: [1, 1.1, 1],
+              rotate: [0, 360],
+              scale: [1, 1.05, 1]
+            }}
+            transition={{ 
+              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+              scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+            }}
+          >
+            {/* Inner Circle */}
+            <motion.div 
+              className="w-full h-full rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Animated Text */}
+              <motion.div 
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.8 }}
+              >
+                <motion.div 
+                  className="text-2xl font-bold text-electric mb-2"
+                  animate={{ opacity: [0.7, 1, 0.7] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <TypingText 
+                    texts={["S"]}
+                    options={{ speed: 200, loop: false, startDelay: 1200 }}
+                    cursor={false}
+                  />
+                </motion.div>
+                <motion.div 
+                  className="text-sm text-gray-400"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 2, duration: 0.8 }}
+                >
+                  <TypingText 
+                    texts={["Dev"]}
+                    options={{ speed: 150, loop: false, startDelay: 2200 }}
+                    cursor={false}
+                  />
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Floating Elements */}
+          <motion.div 
+            className="absolute -top-4 -right-4 w-8 h-8 bg-electric/20 rounded-full"
+            animate={{ 
+              y: [0, -10, 0],
+              opacity: [0.5, 1, 0.5]
+            }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
+          <motion.div 
+            className="absolute -bottom-4 -left-4 w-6 h-6 bg-neon-purple/20 rounded-full"
+            animate={{ 
+              y: [0, 10, 0],
+              opacity: [0.5, 1, 0.5]
+            }}
+            transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+          />
+          <motion.div 
+            className="absolute top-1/2 -left-8 w-4 h-4 bg-neon-green/20 rounded-full"
+            animate={{ 
+              x: [0, -5, 0],
+              opacity: [0.5, 1, 0.5]
+            }}
+            transition={{ duration: 2.5, repeat: Infinity, delay: 2 }}
+          />
+
+          {/* Glow effect */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-r from-electric/20 via-neon-purple/20 to-neon-green/20 rounded-full blur-xl -z-10"
+            animate={{ 
+              scale: [1, 1.2, 1],
               opacity: [0.3, 0.6, 0.3]
             }}
             transition={{ duration: 3, repeat: Infinity }}
