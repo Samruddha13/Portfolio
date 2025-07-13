@@ -30,7 +30,7 @@ export default function SidebarNavigation() {
     <>
       {/* Menu Toggle Button */}
       <motion.button
-        className="fixed top-6 left-6 z-50 glass-intense p-3 rounded-lg hover-glow cursor-pointer"
+        className="fixed top-3 left-6 z-50 glass-intense p-3 rounded-lg hover-glow cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -75,27 +75,13 @@ export default function SidebarNavigation() {
           >
             <div className="p-8 h-full flex flex-col">
               {/* Logo/Header */}
-              <motion.div 
-                className="mb-8"
+              <motion.div
+                className="mb-2"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <div className="text-2xl font-mono font-bold text-electric mb-2">
-                  &lt;/Samruddha&gt;
-                </div>
-                <div className="text-sm text-gray-400">
-                  <TypingText 
-                    texts={[
-                      "Frontend Developer",
-                      "React.js Specialist", 
-                      "UI/UX Enthusiast",
-                      "Problem Solver"
-                    ]}
-                    options={{ speed: 80, delay: 1500, startDelay: 500 }}
-                    className="text-neon-green"
-                  />
-                </div>
+                <div className="text-2xl font-mono font-bold text-electric  mb-2 top-6"></div>
               </motion.div>
 
               {/* Navigation Items */}
@@ -113,9 +99,9 @@ export default function SidebarNavigation() {
                         transition={{ delay: 0.3 + index * 0.1 }}
                         whileHover={{ x: 10 }}
                       >
-                        <Icon 
-                          className="text-electric group-hover:text-neon-purple transition-colors" 
-                          size={20} 
+                        <Icon
+                          className="text-electric group-hover:text-neon-purple transition-colors"
+                          size={20}
                         />
                         <span className="text-gray-300 group-hover:text-white transition-colors">
                           {item.label}
@@ -127,7 +113,7 @@ export default function SidebarNavigation() {
               </nav>
 
               {/* Theme Toggle */}
-              <motion.div 
+              <motion.div
                 className="mt-8 pt-8 border-t border-white/10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -157,14 +143,18 @@ export default function SidebarNavigation() {
                 {/* Social Links */}
                 <div className="mt-6 text-center">
                   <div className="text-xs text-gray-500 mb-3">
-                    <TypingText 
-                      texts={["Connect with me", "Let's build together", "Available for projects"]}
+                    <TypingText
+                      texts={[
+                        "Connect with me",
+                        "Let's build together",
+                        "Available for projects",
+                      ]}
                       options={{ speed: 60, delay: 2000, startDelay: 1000 }}
                     />
                   </div>
                   <div className="flex justify-center gap-3">
                     <motion.a
-                      href="#"
+                      href="https://www.linkedin.com/in/samruddhashambharkar/"
                       className="w-10 h-10 bg-electric/20 rounded-lg flex items-center justify-center hover:bg-electric hover:text-black transition-all"
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.9 }}
@@ -172,7 +162,7 @@ export default function SidebarNavigation() {
                       <i className="fab fa-linkedin text-sm"></i>
                     </motion.a>
                     <motion.a
-                      href="#"
+                      href="https://github.com/Samruddha13"
                       className="w-10 h-10 bg-neon-purple/20 rounded-lg flex items-center justify-center hover:bg-neon-purple hover:text-black transition-all"
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.9 }}

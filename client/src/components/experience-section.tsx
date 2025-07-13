@@ -129,47 +129,45 @@ function TimelineItem({ title, company, role, period, responsibilities, color, s
 export default function ExperienceSection() {
   const experiences = [
     {
-      title: "Frontend Developer",
-      company: "TechCorp Solutions",
-      role: "React.js Developer & UI/UX Implementer",
-      period: "Jun 2024 - Present",
+      title: "FullStack Developer Intern",
+      company: "FireBlaze Technologies Pvt. Ltd.",
+      role: "Intern",
+      period: "Feb 2025 - Present",
       responsibilities: [
-        "Developed responsive web applications using React.js and TypeScript",
-        "Implemented modern UI/UX designs with Tailwind CSS and Framer Motion",
-        "Collaborated with design team to create pixel-perfect user interfaces",
-        "Optimized application performance and improved Core Web Vitals scores"
+        "Built and maintained responsive web interfaces using HTML, CSS, JavaScript, Bootstrap, and React.js.",
+        "Collaborated with the development team to implement clean, functional, and scalable frontend code for live projects",
+        "Assisted in integrating APIs and improving page performance across devices",
       ],
       color: "text-electric",
-      side: "right" as const
+      side: "right" as const,
     },
     {
-      title: "Junior Web Developer",
-      company: "StartupHub India",
-      role: "Full-Stack Development Intern",
-      period: "Jan 2024 - May 2024",
+      title: "Frontend Developer intern",
+      company: "Dealintra Pvt. Ltd. ",
+      role: "Intern",
+      period: "May 2025 - Present",
       responsibilities: [
-        "Built full-stack applications using React, Node.js, and MongoDB",
-        "Created RESTful APIs and integrated third-party services",
-        "Participated in code reviews and agile development processes",
-        "Contributed to open-source projects and improved documentation"
+        "Collaborated with the frontend team to develop reusable UI components using React.js.",
+        "Implemented responsive design principles to ensure seamless user experience across devices.",
+        "Managed version control using GitHub, created feature branches, and actively participated in code reviews.",
       ],
       color: "text-neon-purple",
-      side: "left" as const
+      side: "left" as const,
     },
     {
-      title: "Freelance Developer",
-      company: "Self-Employed",
-      role: "Frontend Specialist & Consultant",
-      period: "Sep 2023 - Dec 2023",
+      title: "Software Engineer",
+      company: "Headstarter AI",
+      role: "Intern",
+      period: "July 2024 - Feb 2025",
       responsibilities: [
         "Delivered custom web solutions for small businesses and startups",
         "Specialized in React.js, Next.js, and modern frontend technologies",
         "Provided technical consultation on web development best practices",
-        "Managed client relationships and project timelines independently"
+        "Managed client relationships and project timelines independently",
       ],
       color: "text-neon-green",
-      side: "right" as const
-    }
+      side: "right" as const,
+    },
   ];
 
   return (

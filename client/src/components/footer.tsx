@@ -49,7 +49,7 @@ export default function Footer() {
             <div>
               <h3 className="text-2xl font-mono font-bold text-electric mb-3">
                 <TypingText 
-                  texts={["&lt;/Samruddha&gt;"]}
+                  texts={["</Sam>"]}
                   options={{ speed: 100, loop: false, startDelay: 500 }}
                   cursor={false}
                 />
@@ -57,7 +57,7 @@ export default function Footer() {
               <p className="text-gray-400 leading-relaxed">
                 <TypingText 
                   texts={[
-                    "Frontend Developer passionate about creating beautiful, functional web experiences with modern technologies."
+                    "Thank you for visiting my portfolio! Let's connect and build something amazing together!"
                   ]}
                   options={{ speed: 50, loop: false, startDelay: 1500 }}
                   cursor={false}
@@ -207,9 +207,7 @@ export default function Footer() {
             <span>Built with modern web technologies</span>
             <div className="flex gap-2">
               <span className="w-2 h-2 bg-electric rounded-full animate-pulse"></span>
-              <span className="w-2 h-2 bg-neon-purple rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></span>
-              <span className="w-2 h-2 bg-neon-green rounded-full animate-pulse" style={{animationDelay: '1s'}}></span>
-            </div>
+              </div>
           </motion.div>
         </motion.div>
       </div>
